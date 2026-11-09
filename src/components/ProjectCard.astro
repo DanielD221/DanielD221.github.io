@@ -1,0 +1,9 @@
+---
+interface Props { title: string; description: string; category: string; number: string; }
+const { title, description, category, number } = Astro.props;
+---
+<article class="project-card">
+  <div class="card-top"><span>{number}</span><span class="badge">Placeholder</span></div>
+  <div class="card-content"><p class="eyebrow">{category}</p><h3>{title}</h3><p>{description}</p></div>
+  <p class="card-note">Project details coming later</p>
+</article>

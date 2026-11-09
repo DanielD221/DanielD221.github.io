@@ -1,0 +1,35 @@
+---
+import '../styles/global.css';
+interface Props { title?: string; description?: string; }
+const {
+  title = 'Dāniels Dūda — Technology, people & ideas',
+  description = 'The personal website of Dāniels Dūda. Exploring software development, IT project coordination, teaching, AI tools, and creative work.',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f6f5ef" />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href="/" aria-label="Dāniels Dūda, home">Dāniels Dūda<span aria-hidden="true">.</span></a>
+      <nav aria-label="Main navigation"><a href="/#about">About</a><a href="/#projects">Projects</a><a href="/#contact">Contact</a></nav>
+    </header>
+    <main id="main" class="wrap"><slot /></main>
+    <footer class="site-footer wrap"><p>© {new Date().getFullYear()} Dāniels Dūda</p><p>A space for work, ideas, and what comes next.</p></footer>
+  </body>
+</html>
