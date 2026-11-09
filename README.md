@@ -6,7 +6,7 @@ Built with [Astro](https://astro.build/) and TypeScript as a static website for 
 
 ## Project status
 
-The site has separate Home, Projects, and CV pages, with a shared profile sidebar and social links. The sidebar stays visible while scrolling on desktop and moves above the content on mobile. The Projects section documents six public repositories, with dedicated detail pages and GitHub links. The profile image is currently a monogram. The detailed CV has not been added yet. Add the PDF as `public/cv.pdf` to enable the embedded viewer and download links. Article routes are prepared for future use but are not linked in the navigation; drafts remain unpublished.
+The site has separate Home, Projects, and CV pages, with a shared profile sidebar and social links. The sidebar stays visible while scrolling on desktop and moves above the content on mobile. The Projects section documents six public repositories, with dedicated detail pages and GitHub links. The profile image is currently a monogram. The CV is available as an embedded PDF with open and download links. Replace `public/cv.pdf` and rebuild to update it. The sidebar links to GitHub, LinkedIn, and `hello@danielduda.dev`. Article routes are prepared for future use but are not linked in the navigation; drafts remain unpublished.
 
 ## Getting started
 

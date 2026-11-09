@@ -125,6 +125,6 @@ export const projects: Project[] = [
       'A responsive layout for smaller screens.',
       'Support for an embedded PDF CV and a download link when the file is supplied.',
     ],
-    note: 'The profile image is currently a monogram, and the PDF CV is still to be added. The contact email will be linked after domain forwarding is confirmed.',
+    note: 'The profile image is a monogram. The CV is available as an embedded PDF and a download, and the sidebar includes GitHub, LinkedIn, and email links.',
   },
 ];
