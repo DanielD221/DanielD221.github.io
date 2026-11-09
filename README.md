@@ -6,7 +6,7 @@ Built with [Astro](https://astro.build/) and TypeScript as a static website for 
 
 ## Project status
 
-The site has separate Home, Projects, and CV pages, with a shared profile sidebar and social links. The sidebar stays visible while scrolling on desktop and moves above the content on mobile. The Projects section documents six public repositories, with dedicated detail pages and GitHub links. The profile image is currently a monogram. The CV is available as an embedded PDF with open and download links. Replace `public/cv.pdf` and rebuild to update it. The sidebar links to GitHub, LinkedIn, and `hello@danielduda.dev`. Article routes are prepared for future use but are not linked in the navigation; drafts remain unpublished.
+The site has separate Home, Projects, and CV pages, with a shared profile sidebar and social links. The sidebar stays visible while scrolling on desktop and moves above the content on mobile. The Projects section documents six public repositories, with dedicated detail pages and GitHub links. The profile image is currently a monogram. The CV is available as an embedded PDF with open and download links. Replace `public/cv.pdf` and rebuild to update it. The sidebar links to GitHub, LinkedIn, and `hello@danielduda.dev`. Article routes are prepared for future use but are not linked in the navigation; drafts remain unpublished. The prepared article routes are excluded from search indexing until the section is ready.
 
 ## Getting started
 
@@ -39,7 +39,9 @@ To preview a production build, run `npm run build` followed by `npm run preview`
 - `src/styles/global.css` — responsive styles.
 - `src/content.config.ts` — article collection schema.
 - `src/content/articles/` — Markdown articles, including a draft example.
-- `public/` — static assets.
+- `public/` — static assets and the PDF CV.
+- `src/pages/404.astro` — custom not-found page.
+- `src/pages/sitemap.xml.ts`, `src/pages/robots.txt.ts` — search discovery for the public pages.
 - `.github/workflows/` — validation and deployment workflows.
 
 ## Project content

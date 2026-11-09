@@ -1,8 +1,9 @@
 ---
 import '../styles/global.css';
 import SocialIcon from '../components/SocialIcon.astro';
-interface Props { title?: string; description?: string; }
+interface Props { title?: string; description?: string; noindex?: boolean; }
 const {
+  noindex = false,
   title = 'Dāniels Dūda — Technology, people & ideas',
   description = 'The personal website of Dāniels Dūda. Exploring software development, IT project coordination, teaching, AI tools, and creative work.',
 } = Astro.props;
@@ -16,7 +17,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f6f5ef" />
+    <meta name="theme-color" content="#fcfcfa" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:type" content="website" />
