@@ -1,0 +1,6 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects } from '../../data/projects';
+---
+<BaseLayout title="Projects — Dāniels Dūda"><header class="page-heading"><p class="eyebrow">Work & exploration</p><h1>Projects<span class="accent">.</span></h1><p class="lead">Learning by building.</p></header><p class="section-intro">Six public repositories, from Full Stack Open coursework to an AI-assisted study planner. Each project includes its current stage and a link to the source.</p><div class="project-grid">{projects.map(project => <ProjectCard {...project} />)}</div></BaseLayout>

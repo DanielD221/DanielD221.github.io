@@ -1,41 +1,13 @@
 ---
-import ArrowIcon from '../components/ArrowIcon.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import SectionHeading from '../components/SectionHeading.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-const projects = [
-  { number: '01', category: 'Technology', title: 'Building useful things', description: 'A future space for a software project: the problem, the approach, and what I learned.' },
-  { number: '02', category: 'People & learning', title: 'Making knowledge accessible', description: 'A future space for a teaching or coordination project, with context and outcomes.' },
-  { number: '03', category: 'Exploration', title: 'Following an idea', description: 'A future space for experiments with AI tools or a creative project.' },
-];
+import SocialIcon from '../components/SocialIcon.astro';
+import { projects } from '../data/projects';
 ---
 <BaseLayout>
-  <section class="hero" aria-labelledby="hero-title">
-    <div>
-      <p class="eyebrow hero-kicker"><span class="dot" aria-hidden="true"></span>Technology · People · Curiosity</p>
-      <h1 id="hero-title">Dāniels Dūda<span class="accent">.</span></h1>
-      <p class="hero-intro">Connecting ideas,<br />people, and technology.</p>
-      <p class="hero-description">My work spans software development, IT project coordination, and teaching. This is where I share what I build, explore, and learn along the way.</p>
-      <a class="button" href="#projects">Explore my work <ArrowIcon /></a>
-    </div>
-    <div class="identity-placeholder" role="img" aria-label="Personal logo placeholder, to be designed">
-      <span class="identity-corner" aria-hidden="true">DD / 01</span>
-      <span class="monogram" aria-hidden="true">d<span>d</span></span>
-      <span class="identity-caption">Personal logo · Placeholder</span>
-    </div>
-  </section>
-  <section id="about" class="section about" aria-labelledby="about-title">
-    <SectionHeading number="01 / ABOUT" title="More than one way to contribute." id="about-title" />
-    <div class="about-copy"><p>I enjoy the space where technical work meets people. My background brings together developing software, coordinating IT projects, and helping others learn.</p><p>Beyond that, I’m interested in AI tools and creative activities: opportunities to experiment, see things differently, and turn curiosity into something useful.</p><ul class="interests" aria-label="Areas of interest"><li>Software</li><li>IT coordination</li><li>Teaching</li><li>AI tools</li><li>Creative work</li></ul></div>
-  </section>
-  <section id="projects" class="section" aria-labelledby="projects-title">
-    <SectionHeading number="02 / PROJECTS" title="A few things to share." id="projects-title" />
-    <p class="section-intro">This collection is taking shape. These are illustrative placeholders, not completed projects.</p>
-    <div class="project-grid">{projects.map((project) => <ProjectCard {...project} />)}</div>
-    <p class="future-note">Notes and articles will have a home here too. More to come.</p>
-  </section>
-  <section id="contact" class="section contact" aria-labelledby="contact-title">
-    <div><SectionHeading number="03 / CONTACT" title="Let’s connect." id="contact-title" /><p>Find my work on GitHub. More ways to connect will follow.</p></div>
-    <div class="contact-links"><a href="https://github.com/DanielD221">GitHub <ArrowIcon /></a><span class="pending-link">LinkedIn <small>Profile link coming soon</small></span></div>
-  </section>
+  <header class="page-heading"><p class="eyebrow">Technology · People · Curiosity</p><h1>Hi, I’m Dāniels<span class="accent">.</span></h1><p class="lead">Connecting ideas, people, and technology.</p></header>
+  <div class="prose intro-copy"><p>My work spans software development, IT project coordination, and teaching. This is where I share what I build, explore, and learn along the way.</p><p>I enjoy the space where technical work meets people. Beyond that, I’m interested in AI tools and creative activities: opportunities to experiment, see things differently, and turn curiosity into something useful.</p></div>
+  <ul class="interests" aria-label="Areas of interest"><li>Software</li><li>IT coordination</li><li>Teaching</li><li>AI tools</li><li>Creative work</li></ul>
+  <section class="section" aria-labelledby="featured-title"><div class="section-title-row"><h2 id="featured-title">Selected work</h2><a class="text-link" href="/projects/">All projects <SocialIcon name="arrow" /></a></div><p class="section-intro">A mix of learning projects, practical tools, and experiments with software and AI.</p><div class="project-grid">{projects.slice(0, 2).map(project => <ProjectCard {...project} />)}</div></section>
+
 </BaseLayout>

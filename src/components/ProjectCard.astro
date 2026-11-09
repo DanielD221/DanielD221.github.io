@@ -1,9 +1,12 @@
 ---
-interface Props { title: string; description: string; category: string; number: string; }
-const { title, description, category, number } = Astro.props;
+import type { Project } from '../data/projects';
+import SocialIcon from './SocialIcon.astro';
+type Props = Project;
+const { title, description, category, number, slug, status, stack, repository } = Astro.props;
 ---
 <article class="project-card">
-  <div class="card-top"><span>{number}</span><span class="badge">Placeholder</span></div>
-  <div class="card-content"><p class="eyebrow">{category}</p><h3>{title}</h3><p>{description}</p></div>
-  <p class="card-note">Project details coming later</p>
+  <div class="card-top"><span>{number}</span><span class="badge">{status}</span></div>
+  <div class="card-content"><p class="eyebrow">{category}</p><h3><a href={`/projects/${slug}/`}>{title}</a></h3><p>{description}</p></div>
+  <ul class="project-stack" aria-label="Technologies">{stack.map(technology => <li>{technology}</li>)}</ul>
+  <div class="card-links"><a class="text-link" href={`/projects/${slug}/`}>Read about the project <SocialIcon name="arrow" /></a><a class="repository-link" href={`https://github.com/DanielD221/${repository}`} target="_blank" rel="noopener noreferrer" aria-label={`${title} on GitHub (opens in a new tab)`}><SocialIcon name="github" /></a></div>
 </article>
