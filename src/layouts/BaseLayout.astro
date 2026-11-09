@@ -1,10 +1,14 @@
 ---
 import '../styles/global.css';
-interface Props { title?: string; description?: string; }
+import SocialIcon from '../components/SocialIcon.astro';
+interface Props { title?: string; description?: string; noindex?: boolean; }
 const {
+  noindex = false,
   title = 'Dāniels Dūda — Technology, people & ideas',
   description = 'The personal website of Dāniels Dūda. Exploring software development, IT project coordination, teaching, AI tools, and creative work.',
 } = Astro.props;
+const navigation = [{ label: 'Home', href: '/' }, { label: 'Projects', href: '/projects/' }, { label: 'CV', href: '/cv/' }];
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
@@ -13,7 +17,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f6f5ef" />
+    <meta name="theme-color" content="#fcfcfa" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:type" content="website" />
@@ -25,11 +30,29 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header wrap">
-      <a class="wordmark" href="/" aria-label="Dāniels Dūda, home">Dāniels Dūda<span aria-hidden="true">.</span></a>
-      <nav aria-label="Main navigation"><a href="/#about">About</a><a href="/#projects">Projects</a><a href="/#contact">Contact</a></nav>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="wordmark" href="/" aria-label="Dāniels Dūda, home">Dāniels Dūda<span aria-hidden="true">.</span></a>
+        <nav aria-label="Main navigation">
+          {navigation.map(({ label, href }) => <a href={href} aria-current={(currentPath === (href.replace(/\/$/, '') || '/') || (href !== '/' && currentPath.startsWith(href))) ? 'page' : undefined}>{label}</a>)}
+        </nav>
+      </div>
     </header>
-    <main id="main" class="wrap"><slot /></main>
-    <footer class="site-footer wrap"><p>© {new Date().getFullYear()} Dāniels Dūda</p><p>A space for work, ideas, and what comes next.</p></footer>
+    <div class="wrap site-grid">
+      <aside class="profile" aria-label="About Dāniels Dūda">
+        <a class="profile-avatar" href="/" aria-label="Dāniels Dūda, home"><span aria-hidden="true">dd<span>.</span></span></a>
+        <div class="profile-description">
+          <h2>Dāniels Dūda</h2>
+          <p>Software development, IT coordination, and teaching. Curious about AI tools and creative work.</p>
+          <ul class="social-links" aria-label="Social profiles">
+            <li><a href="https://github.com/DanielD221" target="_blank" rel="noopener noreferrer"><SocialIcon name="github" /><span>GitHub</span><span class="external-mark" aria-hidden="true"><SocialIcon name="arrow" /></span><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li><a href="https://www.linkedin.com/in/d%C4%81niels-d%C5%ABda-75149a3a5/" target="_blank" rel="noopener noreferrer"><SocialIcon name="linkedin" /><span>LinkedIn</span><span class="external-mark" aria-hidden="true"><SocialIcon name="arrow" /></span><span class="sr-only"> (opens in a new tab)</span></a></li>
+            <li><a href="mailto:hello@danielduda.dev" aria-label="Email hello@danielduda.dev"><SocialIcon name="email" /><span>Email</span></a></li>
+          </ul>
+        </div>
+      </aside>
+      <main id="main" class="page-content" tabindex="-1"><slot /></main>
+    </div>
+    <footer class="site-footer wrap"><p>© {new Date().getFullYear()} Dāniels Dūda</p><a href="https://github.com/DanielD221" target="_blank" rel="noopener noreferrer" aria-label="GitHub (opens in a new tab)"><SocialIcon name="github" /></a></footer>
   </body>
 </html>
